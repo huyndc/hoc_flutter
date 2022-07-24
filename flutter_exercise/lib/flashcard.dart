@@ -183,19 +183,13 @@ class _MyHomePageState extends State<MyHomePage> {
             style: ElevatedButton.styleFrom(
                 primary: const Color.fromRGBO(101, 187, 237, 1)),
             onPressed: () {
-              restart();
-              shuffle(items);
-              for (var element in _cardStateKeys) {
-                if (!element.currentState!.isFront) {
-                  element.currentState?.toggleCard();
-                }
-              }
-              for (var element in _cardFlips) {
-                if (element == true) {
-                  element == false;
-                }
-              }
-              // setState(() {});
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  transitionDuration: Duration.zero,
+                  pageBuilder: (_, __, ___) => MyHomePage(),
+                ),
+              );
             },
             child: const Text(
               'Reset',

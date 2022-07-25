@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'dart:math';
@@ -84,7 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<bool> _cardFlips = [];
   final List<GlobalKey<FlipCardState>> _cardStateKeys = [];
-
   Widget buildGridView() {
     return Column(
       children: [
@@ -183,6 +180,11 @@ class _MyHomePageState extends State<MyHomePage> {
             style: ElevatedButton.styleFrom(
                 primary: const Color.fromRGBO(101, 187, 237, 1)),
             onPressed: () {
+              print(_previousIndex);
+              items.clear();
+              _cardFlips.clear();
+              _cardStateKeys.clear();
+              restart();
               Navigator.pushReplacement(
                 context,
                 PageRouteBuilder(
@@ -208,6 +210,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'cards',
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.all(15),
         alignment: Alignment.topCenter,
